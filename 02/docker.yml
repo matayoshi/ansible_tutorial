@@ -1,0 +1,16 @@
+---
+
+- hosts: all
+  user: vagrant
+  sudo: yes
+  tasks:
+    - name: upgrade all packages
+      yum: name=* state=latest
+
+- hosts: docker_host
+  user: vagrant
+  sudo: yes
+  roles: 
+    - ssh_key
+    - docker
+    - ansible

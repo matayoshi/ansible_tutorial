@@ -1,0 +1,19 @@
+- hosts: all
+  user: docker
+  sudo: yes
+  tasks:
+    - name: upgrade all packages
+      yum: name=* state=latest
+
+- hosts: web_server
+  user: docker
+  sudo: yes
+  tasks:
+    - name: Install httpd package
+      yum: name={{ item }} state=present
+      with_items:
+        - lynx
+        - httpd
+    - name: Enable httpd server
+      service: name=httpd state=running enabled=yes
+

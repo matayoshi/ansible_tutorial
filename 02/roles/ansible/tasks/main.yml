@@ -1,0 +1,8 @@
+---
+
+- name: Install ansible package
+  yum: name={{ item }} state=present
+  with_items:
+    - ansible
+    - gmp
+

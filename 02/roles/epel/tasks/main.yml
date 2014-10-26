@@ -1,0 +1,9 @@
+---
+
+- name: Get epel repository
+  get_url:
+    url: "{{ epel_rpm_url }}"
+    dest: /tmp/epel.rpm
+- name: Enable epel repository
+  yum: name=/tmp/epel.rpm state=present
+  

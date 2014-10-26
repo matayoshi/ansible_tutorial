@@ -1,0 +1,4 @@
+---
+
+docker_from: "centos:centos6"
+build_image: "docker/ansible"
