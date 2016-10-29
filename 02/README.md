@@ -19,15 +19,16 @@ VagrantとVirtualBoxは事前にインストールしておいてください。
 
 # 2. Vagrant 環境の準備
 
-CentOS 6.5 x86_64 を使います。
+~~CentOS 6.5 x86_64 を使います。~~  
+CentOS Linux 6/x86_64を使います。
 
 ```bash
 $ mkdir ansible_test
 $ cd ansible_test
-$ vagrant box add matayoshi/centos6.5.x86_64
-$ vagrant init matayoshi/centos6.5.x86_64
+$ vagrant box add centos/6
+$ vagrant init centos/6
 $ vi Vagrantfile
-$ diff Vagrantfile Vagrantfile.org 
+$ diff Vagrantfile Vagrantfile.org
 27c27
 <   config.vm.network "private_network", ip: "192.168.33.10"
 ---
@@ -50,7 +51,7 @@ ansible 1.7.2
 $ echo "192.168.33.10" > hosts
 $ ansible -i hosts 192.168.33.10 -m ping
 192.168.33.10 | success >> {
-    "changed": false, 
+    "changed": false,
     "ping": "pong"
 }
 ```
@@ -133,26 +134,26 @@ timing vulnerabilities when used with pycrypto. If possible, you should update
 it (ie. yum update gmp).
 
 
-PLAY [all] ******************************************************************** 
+PLAY [all] ********************************************************************
 
-GATHERING FACTS *************************************************************** 
+GATHERING FACTS ***************************************************************
 ok: [172.17.0.30]
 
-TASK: [upgrade all packages] ************************************************** 
+TASK: [upgrade all packages] **************************************************
 ok: [172.17.0.30]
 
-PLAY [web_server] ************************************************************* 
+PLAY [web_server] *************************************************************
 
-GATHERING FACTS *************************************************************** 
+GATHERING FACTS ***************************************************************
 ok: [172.17.0.30]
 
-TASK: [Install httpd package] ************************************************* 
+TASK: [Install httpd package] *************************************************
 changed: [172.17.0.30] => (item=lynx,httpd)
 
-TASK: [Enable httpd server] *************************************************** 
+TASK: [Enable httpd server] ***************************************************
 changed: [172.17.0.30]
 
-PLAY RECAP ******************************************************************** 
+PLAY RECAP ********************************************************************
 172.17.0.30                : ok=5    changed=2    unreachable=0    failed=0   
 ```
 
